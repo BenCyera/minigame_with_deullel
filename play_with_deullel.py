@@ -24,7 +24,7 @@ class Character:
 
     # 플레이어와 몬스터의 일반공격
     def attack(self, other):
-        damage = random.randint(self.power-10, self.power+10)
+        damage = random.randint(self.power-15, self.power+15)
         other.hp = max(other.hp - damage, 0)
         ment_1(print(f"\n{self.name}의 공격! {other.name}에게 {damage}의 데미지를 입혔습니다."))
         if other.hp == 0:
@@ -51,7 +51,7 @@ class Character:
         ment_1(print(f"{other.name}의 상태: HP {other.hp}/{other.max_hp}"))
 
 
-# 플레이어와 몬스터의 인스턴스, 스테이터스 할당
+# 스토리...
 ment_1(print("\n당신은 길을 걷다가 길냥이를 발견하고 헤벌레 다가갑니다..."))
 ment_1(print("\n하지만 귀여운 길냥이에게 눈이 멀어 공명의 함정에 빠지게 됩니다!"))
 ment_3(print(""" 
@@ -78,8 +78,8 @@ ment_3(print("""
 
 
 # 플레이어와 몬스터 인스턴스(객체), 클래스 지정
-p = Character(ment_1(input('당신의 이름을 알려주세요 : ')), 1000, 50, 60, 300)
-m = Character("들레", 1500, 60, 0, 0)
+p = Character(ment_1(input('당신의 이름을 알려주세요 : ')), 1000, 55, 65, 300)
+m = Character("들레", 1000, 55, 0, 0)
 
 
 # 플레이어의 이름 입력 후 게임 시작 멘트
@@ -98,8 +98,15 @@ ment_1(print(f"{p.name}의 앞에 들레가 나타났다!"))
 
 # 반복문 실행의 조건 정해주기. 플레이어 또는 몬스터의 hp가 0보다 많을 때 계속 반복하기
 while p.hp or m.hp > 0 :
+    print("""
+〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
+""")
+    print('<STETUS>')
     p.show_status(m)
-    ment_1(print(f'\n{p.name}의 선공! \n1.일반공격 2.마법공격(MP:-50) / 번호를 입력해주세요!'))
+    print("""
+〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
+""")
+    ment_1(print(f'{p.name}의 선공! \n1.일반공격 2.마법공격(MP:-50) / 번호를 입력해주세요!'))
     choice = input()
     if choice == '1':
         p.attack(m)
@@ -108,6 +115,7 @@ while p.hp or m.hp > 0 :
         if p.mp == 0 : continue
     else:
         print('잘못 입력하셨습니다.')
+        continue
     
     
     # 게임 종료 조건의 if문과 조건별 출력 멘트
