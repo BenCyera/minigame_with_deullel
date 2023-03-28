@@ -24,7 +24,7 @@ class Character:
 
     # 플레이어와 몬스터의 일반공격
     def attack(self, other):
-        damage = random.randint(self.power-15, self.power+15)
+        damage = random.randint(self.power-20, self.power+20)
         other.hp = max(other.hp - damage, 0)
         ment_1(print(f"\n{self.name}의 공격! {other.name}에게 {damage}의 데미지를 입혔습니다."))
         if other.hp == 0:
@@ -38,7 +38,7 @@ class Character:
             print("보유 중인 MP가 모자랍니다! 마법공격을 사용할 수 없습니다!")
             return
 
-        damage = random.randint(self.magic-15, self.magic+15)
+        damage = random.randint(self.magic-10, self.magic+15)
         other.hp = max(other.hp - damage, 0)
         ment_1(print(f"\n{self.name}의 공격! {other.name}에게 {damage}의 데미지를 입혔습니다."))
         if other.hp == 0:
@@ -84,10 +84,10 @@ m = Character("들레", 1000, 55, 0, 0)
 
 # 플레이어의 이름 입력 후 게임 시작 멘트
 ment_3(print("""
-             
-            .　　　☆ *　. 　☆
+               - 들 -    - 레 -
+             　　　☆ *　. 　☆
             　　☆　. ∧＿∧　∩　* ☆
-            - 등 -- ( ・∀・)/ . -- 장 -！！
+           - 등 --  ( ・∀・)/ . -- 장 -！！
             　　　. ⊂　　 ノ* ☆
             　　☆ * (つ ノ .☆
             　　　　 (ノ
@@ -176,8 +176,8 @@ while p.hp or m.hp > 0 :
         　찰싹
 
         """))
-        ment_3(print("당신은 이제 평생 냥이들의 전용 캔따개가 되어야한다..."))
-        ment_1(print(""" 
+        ment_1(print("당신은 이제 평생 냥이들의 전용 캔따개가 되어야한다..."))
+        ment_3(print(""" 
                 
        .　┌○┐
         　│멍｜ﾊ,,ﾊ
@@ -190,7 +190,7 @@ while p.hp or m.hp > 0 :
         ment_3(print("THE END..."))
         break
     elif m.hp == 0 :
-        ment_1(print(f"{p.name}이(가) 들레와 서경몬을 이겼다! \n들레는 이제 우리집으로!"))
+        ment_1(print(f"{p.name}이(가) 들레를 이겼다!"))
         ment_3(print(""" 
                             ∧ ﾍ
              ∧ ﾍ 찰싹　　　　(´·ω·`)　　찰싹
@@ -209,4 +209,5 @@ while p.hp or m.hp > 0 :
         ┃││ф ф│┃
         ┗┷┷┷┷┷┛
         """))
+        ment_3(print("THE END..."))
         break
